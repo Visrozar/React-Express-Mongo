@@ -14,7 +14,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to my React-Express-Mongo App</h1>
         </header>
+
+        <h1 className="App-title">Create User</h1>
         <AddUser />
+        
+        <h1 className="App-title">View all Users</h1>
         <DisplayUsers />
       </div>
     );

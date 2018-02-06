@@ -43,33 +43,33 @@ class AddUser extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
+            <form onSubmit={this.handleSubmit} className="card">
+                <p> <label>
                     Name:
               <input name="name" type="text" placeholder="Name" value={this.state.name} onChange={e => this.handleChange(e)} required />
-                </label>
-                <label>
+                </label> </p>
+                <p> <label>
                     Phone Number:
               <input name="phone" type="number" placeholder="Phone Number" value={this.state.phone} onChange={e => this.handleChange(e)} required />
-                </label>
-                <label>
+                </label></p>
+                <p><label>
                     Job Title:
               <input name="jobTitle" type="text" placeholder="Job Title" value={this.state.jobTitle} onChange={e => this.handleChange(e)} required />
-                </label>
-                <label>
+                </label></p>
+                <p><label>
                     Email:
               <input name="email" type="email" placeholder="Email" value={this.state.email} onChange={e => this.handleChange(e)} required />
-                </label>
-                <label>
-                    Upload file:
-          <input
-                        type="file" name="test"
+                </label></p>
+                <p><label>
+                    Upload Resume:
+                        <input
+                        type="file"
                         ref={input => {
                             this.fileInput = input;
                         }}
                         required />
-                </label>
-                <input type="submit" value="Submit" />
+                </label></p>
+                <input className="button" type="submit" value="Submit" />
             </form>
         );
     }
