@@ -21,6 +21,8 @@ app.use(bodyParser.urlencoded({ extended: false}))
 //parse application/json
 app.use(bodyParser.json());
 
+// app.use(express.static('uploads'));
+
 app.use('/users', users);
 
 app.get('/', function(req, res){

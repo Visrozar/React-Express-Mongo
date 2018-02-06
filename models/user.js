@@ -49,7 +49,7 @@ var userSchema = new Schema({
   phone: { type: Number, required: true },
   email: { type: String, required: true, unique: true, lowercase: true, validate: emailValidators },
   jobTitle: { type: String, required: true },
-  resume: { type: String }
+  resume: { type: String, required: true }
 });
 
 module.exports = mongoose.model('User', userSchema);
