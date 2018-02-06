@@ -8,3 +8,12 @@
 *	run 'node index.js' to run the express API
 *	go to client folder and run npm install (this will install all the frontend dependencies)
 *	run 'npm start' in client folder to run React app 
+
+## Things to do
+
+*	refresh all users on adding a user
+*	filetype restrictions
+*	file download URL issue
+*	overall Styling
+*	if no users, then print that
+*	errors and success messages from backend to frontend
