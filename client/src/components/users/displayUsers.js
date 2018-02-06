@@ -26,7 +26,8 @@ class DisplayUsers extends Component {
                         <p className="title">{user.jobTitle}</p>
                         <p>{user.email}</p>
                         <p>{user.phone}</p>
-                        <p><button>Resume</button></p>
+                        <p><a href={'http://localhost:8080/'+user.resume} download>Resume</a></p> 
+                        {/* This can defintely be improved */}
                     </div>
                 )}
             </div>

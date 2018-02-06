@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 const users = require('./routes/users')(router);
 const bodyParser = require('body-parser');
+const path = require('path');
+const port = process.env.PORT || 8080;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.uri, (err)=> {
@@ -22,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json());
 
 // app.use(express.static('uploads'));
+app.use('/uploads', express.static('uploads'))
 
 app.use('/users', users);
 
@@ -29,6 +32,6 @@ app.get('/', function(req, res){
   res.send('hello Elvis');
 });
 
-app.listen(8080, ()=> {
+app.listen(port, ()=> {
     console.log('Listening to Port 8080');
 });
