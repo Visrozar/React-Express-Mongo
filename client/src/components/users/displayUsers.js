@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './users.css';
+import './displayUsers.css';
 
-class Users extends Component {
+class DisplayUsers extends Component {
     constructor() {
         super();
         this.state = {
@@ -14,7 +14,7 @@ class Users extends Component {
     componentDidMount() {
         fetch('/users/getUsers')
             .then(res => res.json())
-            .then(users => this.setState({ users }, () => console.log('Users fetched..', users)));
+            .then(users => this.setState({ users }));
     }
 
     render() {
@@ -34,4 +34,4 @@ class Users extends Component {
     }
 }
 
-export default Users;
+export default DisplayUsers;
