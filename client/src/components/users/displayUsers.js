@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './displayUsers.css';
+import AddUser from './addUser'
 
 class DisplayUsers extends Component {
     constructor() {
@@ -9,16 +10,32 @@ class DisplayUsers extends Component {
                 users: []
             }
         }
+
+        this.updateUsers = this.updateUsers.bind(this);
     }
 
     componentDidMount() {
         fetch('/users/getUsers')
             .then(res => res.json())
-            .then(users => this.setState({ users }));
+            .catch(function(error) {
+                console.log(error);
+            })
+            .then(users => this.setState({ users }))
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    updateUsers(users) {
+        this.setState({ users });
     }
 
     render() {
         return (
+            <div>
+            <h1 className="App-title">Create New User</h1>
+            <AddUser onSubmit={this.updateUsers} />
+        <h1 className="App-title">View all Users</h1>
             <div>
                 {this.state.users.users.map(user =>
                     <div key={user._id} className="card">
@@ -30,6 +47,7 @@ class DisplayUsers extends Component {
                         {/* This can defintely be improved */}
                     </div>
                 )}
+            </div>
             </div>
         );
     }

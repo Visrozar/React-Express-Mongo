@@ -21,10 +21,21 @@ class AddUser extends Component {
     }
 
     handleSubmit(event) {
+        const { onSubmit } = this.props;
+
         console.log('A name was submitted: ' + this.state.name);
         console.log('Selected file: ' + this.fileInput.files[0].name);
-        this.fileUpload(this.fileInput.files[0]).then(response => response.json())
-            .then(content => console.log(content));
+        this.fileUpload(this.fileInput.files[0])
+            .then(response => response.json())
+            .catch(response => response.json())
+            .then(function (response) {
+                if (response.success) {
+                    onSubmit(response)
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         event.preventDefault();
     }
 
@@ -58,7 +69,7 @@ class AddUser extends Component {
                 </label></p>
                 <p><label>
                     Email:
-              <input name="email" type="email" placeholder="Email" value={this.state.email} onChange={e => this.handleChange(e)} required />
+              <input name="email" type="email" placeholder="Email (needs to be unique)" value={this.state.email} onChange={e => this.handleChange(e)} required />
                 </label></p>
                 <p><label>
                     Upload Resume:

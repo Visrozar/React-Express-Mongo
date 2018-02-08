@@ -17,6 +17,9 @@ mongoose.connect(config.uri, (err)=> {
     }
 });
 
+// serve the react app files
+app.use(express.static(`${__dirname}/client/build`));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false}))
 
@@ -28,9 +31,9 @@ app.use('/uploads', express.static('uploads'))
 
 app.use('/users', users);
 
-app.get('/', function(req, res){
-  res.send('hello Elvis');
-});
+// app.get('/', function(req, res){
+//   res.send('hello Elvis');
+// });
 
 app.listen(port, ()=> {
     console.log('Listening to Port 8080');

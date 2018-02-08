@@ -86,19 +86,23 @@ module.exports = (router) => {
                                             }
                                         }
                                     } else {
-                                        res.json({ success: true, message: 'User added!' }); // Return success
+                                        findUser(req, res);
                                     }
                                 });
                             }
                         }
                     }
                 }
-                res.json({ success: true, message: 'File Uploaded!' });
+                // res.json({ success: true, message: 'File Uploaded!' });
             }
         });
     });
 
     router.get('/getUsers', (req, res) => {
+        findUser(req, res);
+    });
+
+    function findUser(req, res) {
         User.find({}).exec((err, users) => {
             if (err) {
                 res.json({ success: false, message: err }); // Return error
@@ -111,9 +115,7 @@ module.exports = (router) => {
                 }
             }
         });
-    });
-
-
+    }
 
     return router;
 }
